@@ -10,6 +10,7 @@ if [ -d "/var/lib/mysql/ShopDBReserve" ]; then
     mysqldump -u DB_USER -pDB_PASSWORD ShopDBReserve < ShopDB-Full.sql
 else
     mysql -u DB_USER -pDB_PASSWORD -e "CREATE DATABASE ShopDBReserve;"
+    sleep 5
     mysqldump -u DB_USER -pDB_PASSWORD ShopDBReserve < ShopDB-Full.sql
 fi
 
