@@ -9,7 +9,7 @@ if [ -d "/var/lib/mysql/ShopDBReserve" ]; then
     # Restore full backup the database ShopDB in the database ShopDBReserve
     mysqldump -u DB_USER -pDB_PASSWORD ShopDBReserve < ShopDB-Full.sql
 else
-    mysql -u DB_USER -pDB_PASSWORD -e "CREATE DATABASE ShopDBReserve;"
+    mysql -u DB_USER -pDB_PASSWORD < create-database.sql
     sleep 5
     mysqldump -u DB_USER -pDB_PASSWORD ShopDBReserve < ShopDB-Full.sql
 fi
