@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Create full backup the database ShopDB
-mysqldump -u $DB_USER -p$DB_PASSWORD ShopDB --result-file=ShopDB-Full.sql
+mysqldump -u $DB_USER -p$DB_PASSWORD ShopDB --result-file=ShopDB-Full.sql --no-create-db
 
 
 # Check if the source database directory exists
