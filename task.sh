@@ -1,17 +1,17 @@
 #! /bin/bash
 
 # Create full backup the database ShopDB
-mysqldump -u DB_USER -pDB_PASSWORD --databases ShopDB --result-file=ShopDB-Full.sql --no-create-db
+mysqldump -u $DB_USER -p$DB_PASSWORD --databases ShopDB --result-file=ShopDB-Full.sql --no-create-db
 
 
 # Check if the source database directory exists
 if [ -d "/var/lib/mysql/ShopDBReserve" ]; then
     # Restore full backup the database ShopDB in the database ShopDBReserve
-    mysqldump -u DB_USER -pDB_PASSWORD ShopDBReserve < ShopDB-Full.sql
+    mysqldump -u $DB_USER -p$DB_PASSWORD ShopDBReserve < ShopDB-Full.sql
 else
-    mysql -u DB_USER -pDB_PASSWORD < create-database.sql
+    mysql -u $DB_USER -p$DB_PASSWORD < create-database.sql
     sleep 5
-    mysqldump -u DB_USER -pDB_PASSWORD ShopDBReserve < ShopDB-Full.sql
+    mysqldump -u $DB_USER -p$DB_PASSWORD ShopDBReserve < ShopDB-Full.sql
 fi
 
 
